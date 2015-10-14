@@ -1,0 +1,24 @@
+# Updated 2014-12-10: rik
+#
+# Ukarumpa Linux Mint Repository
+deb ftp://ftp.sil.org.pg/Software/CTS/Supported_Software/Ubuntu_Repository/mirror/packages.linuxmint.com/ qiana main upstream import
+deb ftp://ftp.sil.org.pg/Software/CTS/Supported_Software/Ubuntu_Repository/mirror/packages.linuxmint.com/ rebecca main upstream import
+
+# Ukarumpa Local Ubuntu Repositories
+deb ftp://ftp.sil.org.pg/Software/CTS/Supported_Software/Ubuntu_Repository/mirror/archive.ubuntu.com/ubuntu trusty main restricted multiverse universe
+deb ftp://ftp.sil.org.pg/Software/CTS/Supported_Software/Ubuntu_Repository/mirror/archive.ubuntu.com/ubuntu trusty-updates main restricted multiverse universe
+deb ftp://ftp.sil.org.pg/Software/CTS/Supported_Software/Ubuntu_Repository/mirror/archive.ubuntu.com/ubuntu trusty-security main restricted multiverse universe
+deb ftp://ftp.sil.org.pg/Software/CTS/Supported_Software/Ubuntu_Repository/mirror/archive.canonical.com/ubuntu/ trusty partner
+
+# Ukarumpa Local Launchpad PPA Repositories
+deb ftp://ftp.sil.org.pg/Software/CTS/Supported_Software/Ubuntu_Repository/mirror/ppa.launchpad.net/wasta-linux/wasta/ubuntu trusty main
+deb ftp://ftp.sil.org.pg/Software/CTS/Supported_Software/Ubuntu_Repository/mirror/ppa.launchpad.net/wasta-linux/wasta-apps/ubuntu trusty main
+deb ftp://ftp.sil.org.pg/Software/CTS/Supported_Software/Ubuntu_Repository/mirror/ppa.launchpad.net/libreoffice/libreoffice-4-3/ubuntu trusty main
+
+# Ukarumpa Local SIL Repositories
+deb ftp://ftp.sil.org.pg/Software/CTS/Supported_Software/Ubuntu_Repository/mirror/packages.sil.org/ubuntu trusty main
+
+# Ukarumpa Local Palaso.org Repository
+deb ftp://ftp.sil.org.pg/Software/CTS/Supported_Software/Ubuntu_Repository/mirror/packages.palaso.org/ubuntu trusty main
+
+# Standard APT Repositories

@@ -1,0 +1,15 @@
+Source: wasta-custom-png-uka
+Section: utils
+Priority: extra
+Maintainer: Rik Shaw <rikshaw76@gmail.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+
+Package: wasta-custom-png-uka
+Architecture: any
+Depends: adaptit, paratext-7.4, wasta-base-setup, wasta-custom-png, wasta-resources-png-uka, ${shlibs:Depends}, ${misc:Depends}
+Description: wasta-Linux PNG Ukarumpa customization
+ Customizes wasta-Linux with PNG Ukarumpa adjustments, including:
+    - custom default wasta-menus application list
+    - custom gsettings defaults
+    - uka-repos.sh to toggle Ukarumpa FTP Repositories in /etc/apt/sources.list

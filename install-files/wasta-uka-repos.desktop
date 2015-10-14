@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Ukarumpa Software Sources
+Comment=ENABLE or DISABLE Ukarumpa Software Sources
+Exec=su-to-root -X -c "/usr/share/wasta-custom-png-uka/uka-repos/uka-repos.sh"
+Type=Application
+Icon=software-properties
+Categories=GNOME;GTK;Settings;

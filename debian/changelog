@@ -1,0 +1,18 @@
+wasta-custom-png-uka (1.0.1) precise; urgency=medium
+
+  * Initial GitHub / Launchpad commit
+  * wasta-menus modification to use update-alternatives
+
+ -- Rik Shaw <rikshaw76@gmail.com>  Wed, 14 Oct 2015 16:01:04 +0300
+
+wasta-custom-png-uka (1.0.0) trusty; urgency=medium
+
+  * Trusty version
+
+ -- Rik Shaw <rikshaw76@gmail.com>  Thu, 11 Dec 2014 07:24:37 +0300
+
+wasta-custom-png-uka (0.1.0) precise; urgency=low
+
+  * Initial Release.
+
+ -- Rik Shaw <rikshaw76@gmail.com>  Fri, 09 May 2014 11:19:07 -0500
