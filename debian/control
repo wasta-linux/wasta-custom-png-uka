@@ -6,8 +6,9 @@ Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.3
 
 Package: wasta-custom-png-uka
-Architecture: any
-Depends: adaptit, paratext-7.4, wasta-base-setup, wasta-custom-png, wasta-resources-png-uka, ${shlibs:Depends}, ${misc:Depends}
+Architecture: all
+Depends: wasta-core-xenial, wasta-custom-png, ${shlibs:Depends}, ${misc:Depends}
+Recommends: wasta-resources-png
 Description: wasta-Linux PNG Ukarumpa customization
  Customizes wasta-Linux with PNG Ukarumpa adjustments, including:
     - custom default wasta-menus application list

@@ -37,33 +37,6 @@ echo
 DIR=/usr/share/wasta-custom-png-uka
 
 # ------------------------------------------------------------------------------
-# Dconf / Gsettings Default Value adjustments
-# ------------------------------------------------------------------------------
-echo
-echo "*** Updating dconf / gsettings default values"
-echo
-
-# Values in /usr/share/glib-2.0/schemas/z_20_wasta-custom-xyz.gschema.override
-#   will override Mint defaults.  Below command compiles them to be the defaults
-#   for the current machine.
-#
-# '|| true;' sends any "error" to null (for Cinnamon 1.8-, will get error that some
-#   org.cinnamon.muffin key not found, but will not cause a problem, so
-#   suppressing errors to not worry user.)
-
-glib-compile-schemas /usr/share/glib-2.0/schemas/ 2>/dev/null || true;
-
-# ------------------------------------------------------------------------------
-# Configuring Wasta Menus Default Apps
-# ------------------------------------------------------------------------------
-echo
-echo "*** Installing wasta-menus-default-apps.txt in update-alternatives system"
-echo
-#   Use priority 20 so that will override defaults wasta-menus defaults (10)
-update-alternatives --install /etc/wasta-menus-default-apps.txt \
-    wasta-menus-default-apps $DIR/resources/wasta-menus-default-apps.txt 20
-
-# ------------------------------------------------------------------------------
 # Finished
 # ------------------------------------------------------------------------------
 

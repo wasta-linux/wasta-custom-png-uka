@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# ==============================================================================
+# wasta-uka-repos
+#
+#   This script will enable or disable the Ukarumpa Mirrors.
+#
+#   2014-01-27 rik: initial script
+#   2014-01-28 rik: minor updates
+#   2014-05-09 rik: modified to be part of wasta-custom-png-uka instead of
+#       wasta-custom-png
+#   2017-07-01 rik: updating for xenial with kim
+#
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Check to ensure running as root
+# ------------------------------------------------------------------------------
+#   No fancy "double click" here because normal user should never need to run
+#   .desktop launcher will call gksu
+if [ $(id -u) -ne 0 ]
+then
+	echo
+	echo "You must run this script with sudo." >&2
+	echo "Exiting...."
+	sleep 5s
+	exit 1
+fi
+
+# ------------------------------------------------------------------------------
+# Main Processing
+# ------------------------------------------------------------------------------
+
+UKA_SOURCES="/usr/share/wasta-custom-png-uka/uka-repos/sources.list.uka-mirror"
+APT_SOURCES="/etc/apt/sources.list"
+MSG=""
+
+# ------------------------------------------------------------------------------
+# Enabling or Disabling uka-sources.list entries
+# ------------------------------------------------------------------------------
+UKA_SERVERS=$(zenity --list --title "Ukarumpa Software Sources" \
+    --text "Do you want to <b>ENABLE</b> or <b>DISABLE</b> the Ukarumpa Software Sources?
+
+If you are <b>NOT</b> at Ukarumpa and <b>ENABLE</b> them, you will receive <b>errors</b>
+when you attempt to update your system." --radiolist --height=250 \
+    --column "" --column "Action" --column "Description" \
+     FALSE      ON                "'ENABLE' Ukarumpa Software Sources"\
+     FALSE      OFF               "'DISABLE' Ukarumpa Software Sources")
+
+if [ "$UKA_SERVERS" == "ON" ];
+then
+    # Enable UKA Mirrors: IF there is no sources.list.uka-internet then we are
+    # using internet sources, so copy current sources.list to
+    # sources.list.uka-internet and replace sources.list with package's
+    # sources.list.uka-mirror
+    MSG+="<b>*** ENABLING</b> Ukarumpa Software Sources\n\n
+PLACE ENABLING UKA MIRRORS MESSAGE HERE\n\n"
+
+    if ! [ -e "$UKA_SOURCES" ];
+    then
+        MSG+-"Ukarumpa Software Sources File NOT Found!\n
+<b>File Missing:</b> $UKA_SOURCES\n
+Update or install the wasta-custom-png-uka package!
+<b>EXITING!</b>"
+    fi
+
+    # If no existing backup, then backup current sources.list
+    if ! [ -e "$APT_SOURCES.uka-internet" ]; then
+        cp "$APT_SOURCES" "$APT_SOURCES.uka-internet"
+    fi
+
+    # Replace sources.list from package's version
+    cp "$UKA_SOURCES" "$APT_SOURCES"
+elif [ "$UKA_SERVERS" == "OFF" ]; then
+    # Disable by commenting out the lines in sources.list
+    MSG+="<b>*** DISABLING</b> Ukarumpa Software Sources\n\n
+PLACE DISABLING UKA MIRRORS MESSAGE HERE\n\n"
+
+    # If uka-internet found, replace sources.list with it
+    if [ -e "$APT_SOURCES.uka-internet" ]; then
+        mv "$APT_SOURCES.uka-internet" "$APT_SOURCES"
+    fi
+else
+    #User CANCELED so close (for now no message)
+    exit 0
+fi
+
+MSG+="<b>Finished Processing</b>"
+
+# ------------------------------------------------------------------------------
+# Finished
+# ------------------------------------------------------------------------------
+zenity --info --title "Ukarumpa Software Sources" --no-wrap --text "$MSG"
+
+exit 0

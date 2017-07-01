@@ -1,2 +1,3 @@
+install-files/wasta-uka-repos             usr/bin
 install-files/wasta-uka-repos.desktop     usr/share/applications
 wasta-custom-png-uka                      usr/share

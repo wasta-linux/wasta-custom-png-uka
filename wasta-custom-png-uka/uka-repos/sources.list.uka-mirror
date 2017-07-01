@@ -1,0 +1,15 @@
+# SILPNG Ubuntu Mirror
+deb http://linuxrepo.sil.org.pg/mirror/archive.ubuntu.com/ubuntu xenial main restricted multiverse universe
+deb http://linuxrepo.sil.org.pg/mirror/archive.ubuntu.com/ubuntu xenial-updates main restricted multiverse universe
+deb http://linuxrepo.sil.org.pg/mirror/archive.ubuntu.com/ubuntu xenial-security main restricted multiverse universe
+deb http://linuxrepo.sil.org.pg/mirror/archive.ubuntu.com/ubuntu xenial-backports main restricted multiverse universe
+deb http://linuxrepo.sil.org.pg/mirror/archive.canonical.com/ubuntu xenial partner
+#deb http://linuxrepo.sil.org.pg/mirror/ppa.launchpad.net/libreoffice/ppa/ubuntu xenial main
+
+# SILPNG sil.org Mirror
+deb http://linuxrepo.sil.org.pg/mirror/packages.sil.org/ubuntu xenial main
+deb http://linuxrepo.sil.org.pg/mirror/packages.sil.org/ubuntu xenial-experimental main
+
+# SILPNG Wasta Mirror
+deb http://linuxrepo.sil.org.pg/mirror/ppa.launchpad.net/wasta-linux/wasta-apps/ubuntu xenial main
+deb http://linuxrepo.sil.org.pg/mirror/ppa.launchpad.net/wasta-linux/wasta/ubuntu xenial main

@@ -1,3 +1,9 @@
+wasta-custom-png-uka (1.1.0) xenial; urgency=medium
+
+  * fixing uka-repos.sh for xenial 
+
+ -- Kim Blewett <kim_blewett@sil.org>  Sat, 01 Jul 2017 12:59:43 -0500
+
 wasta-custom-png-uka (1.0.1) precise; urgency=medium
 
   * Initial GitHub / Launchpad commit
