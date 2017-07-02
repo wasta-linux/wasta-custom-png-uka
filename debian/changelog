@@ -1,3 +1,9 @@
+wasta-custom-png-uka (1.1.2) xenial; urgency=medium
+
+  * moved wasta-custom-png to recommends because it is broken
+
+ -- Kim Blewett <kim_blewett@sil.org>  Sun, 02 Jul 2017 15:00:29 -0500
+
 wasta-custom-png-uka (1.1.1) xenial; urgency=medium
 
   * changed icon for Uka-Repos launcher

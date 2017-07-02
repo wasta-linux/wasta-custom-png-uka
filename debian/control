@@ -7,8 +7,8 @@ Standards-Version: 3.9.3
 
 Package: wasta-custom-png-uka
 Architecture: all
-Depends: wasta-core-xenial, wasta-custom-png, ${shlibs:Depends}, ${misc:Depends}
-Recommends: wasta-resources-png
+Depends: wasta-core-xenial, ${shlibs:Depends}, ${misc:Depends}
+Recommends: wasta-resources-png, wasta-custom-png
 Description: wasta-Linux PNG Ukarumpa customization
  Customizes wasta-Linux with PNG Ukarumpa adjustments, including:
     - custom default wasta-menus application list
