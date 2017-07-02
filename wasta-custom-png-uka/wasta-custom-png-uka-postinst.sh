@@ -33,8 +33,22 @@ echo
 echo "*** Beginning wasta-custom-png-uka-postinst.sh"
 echo
 
-# Setup Diretory for later reference
+# Setup Directory for later reference
 DIR=/usr/share/wasta-custom-png-uka
+
+# ------------------------------------------------------------------------------
+# Dconf / Gsettings Default Value adjustments
+# ------------------------------------------------------------------------------
+# Override files in /usr/share/glib-2.0/schemas/ folder.
+#   Values in z_30_wasta-custom-png-boug.gschema.override will override values
+#   in z_10_wasta-base-setup.gschema.override which will override Mint defaults.
+echo
+echo "*** Updating dconf / gsettings default values"
+echo
+# Sending any "error" to null (if a key isn't found it will return an error,
+#   but for different version of Cinnamon, etc., some keys may not exist but we
+#   don't want to error in this case: suppressing errors to not worry user.
+glib-compile-schemas /usr/share/glib-2.0/schemas/ 2>/dev/null || true;
 
 # ------------------------------------------------------------------------------
 # Finished

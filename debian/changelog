@@ -1,3 +1,9 @@
+wasta-custom-png-uka (1.1.1) xenial; urgency=medium
+
+  * changed icon for Uka-Repos launcher
+
+ -- Kim Blewett <kim_blewett@sil.org>  Sat, 01 Jul 2017 17:15:23 -0500
+
 wasta-custom-png-uka (1.1.0) xenial; urgency=medium
 
   * fixing uka-repos.sh for xenial 

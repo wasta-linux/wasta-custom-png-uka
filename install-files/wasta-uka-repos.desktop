@@ -3,5 +3,5 @@ Name=Ukarumpa Software Sources
 Comment=ENABLE or DISABLE Ukarumpa Software Sources
 Exec=su-to-root -X -c wasta-uka-repos
 Type=Application
-Icon=software-properties
+Icon=wasta-linux
 Categories=GNOME;GTK;Settings;
