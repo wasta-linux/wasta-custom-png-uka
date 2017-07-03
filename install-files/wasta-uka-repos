@@ -10,6 +10,7 @@
 #   2014-05-09 rik: modified to be part of wasta-custom-png-uka instead of
 #       wasta-custom-png
 #   2017-07-01 rik: updating for xenial with kim
+#   2017-07-02 kim: desktop icon fix; added messages to output
 #
 # ==============================================================================
 
@@ -54,7 +55,8 @@ then
     # sources.list.uka-internet and replace sources.list with package's
     # sources.list.uka-mirror
     MSG+="<b>*** ENABLING</b> Ukarumpa Software Sources\n\n
-PLACE ENABLING UKA MIRRORS MESSAGE HERE\n\n"
+Also untick (disable) internet source lines in\n
+<b>Software and Updates</b>, from the Main Menu \n\n"
 
     if ! [ -e "$UKA_SOURCES" ];
     then
@@ -74,7 +76,8 @@ Update or install the wasta-custom-png-uka package!
 elif [ "$UKA_SERVERS" == "OFF" ]; then
     # Disable by commenting out the lines in sources.list
     MSG+="<b>*** DISABLING</b> Ukarumpa Software Sources\n\n
-PLACE DISABLING UKA MIRRORS MESSAGE HERE\n\n"
+Also tick (re-enable) internet source lines in\n
+<b>Software and Updates</b>, from the Main Menu \n\n"
 
     # If uka-internet found, replace sources.list with it
     if [ -e "$APT_SOURCES.uka-internet" ]; then
@@ -85,7 +88,8 @@ else
     exit 0
 fi
 
-MSG+="<b>Finished Processing</b>"
+MSG+="\n
+<b>Finished Processing</b>"
 
 # ------------------------------------------------------------------------------
 # Finished
