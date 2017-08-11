@@ -11,6 +11,8 @@
 #       wasta-custom-png
 #   2017-07-01 rik: updating for xenial with kim
 #   2017-07-02 kim: desktop icon fix; added messages to output
+#   2017-08-11 rik: adding sources.list.d disabling and re-enabling by using
+#       "#wasta" at the end of lines
 #
 # ==============================================================================
 
@@ -34,6 +36,7 @@ fi
 
 UKA_SOURCES="/usr/share/wasta-custom-png-uka/uka-repos/sources.list.uka-mirror"
 APT_SOURCES="/etc/apt/sources.list"
+APT_SOURCES_D="/etc/apt/sources.list.d/"
 MSG=""
 
 # ------------------------------------------------------------------------------
@@ -54,9 +57,10 @@ then
     # using internet sources, so copy current sources.list to
     # sources.list.uka-internet and replace sources.list with package's
     # sources.list.uka-mirror
-    MSG+="<b>*** ENABLING</b> Ukarumpa Software Sources\n\n
-Also untick (disable) internet source lines in\n
-<b>Software and Updates</b>, from the Main Menu \n\n"
+    MSG+="<b>*** ENABLING</b> Ukarumpa software sources\n
+<b>*** DISABLING</b> internet software sources\n
+To confirm your current software sources check
+<b>'Software and Updates'</b> from the Main Menu\n"
 
     if ! [ -e "$UKA_SOURCES" ];
     then
@@ -73,16 +77,32 @@ Update or install the wasta-custom-png-uka package!
 
     # Replace sources.list from package's version
     cp "$UKA_SOURCES" "$APT_SOURCES"
-elif [ "$UKA_SERVERS" == "OFF" ]; then
-    # Disable by commenting out the lines in sources.list
-    MSG+="<b>*** DISABLING</b> Ukarumpa Software Sources\n\n
-Also tick (re-enable) internet source lines in\n
-<b>Software and Updates</b>, from the Main Menu \n\n"
 
-    # If uka-internet found, replace sources.list with it
+    # DISABLE all sources.list.d entries
+    # sed: match all lines that start with deb (with optional spaces before)
+    find $APT_SOURCES_D -type f -exec \
+        sed -i -e 's@^ *\(deb.*\)@# \1 #wasta@g' {} \;
+
+elif [ "$UKA_SERVERS" == "OFF" ]; then
+    # Disable UKA Mirrors: IF sources.list.uka-internet found (we are active)
+    # then replace current sources.list with it
+    MSG+="<b>*** DISABLING</b> Ukarumpa software sources\n
+<b>*** ENABLING</b> internet software sources\n
+To confirm your current software sources check
+<b>'Software and Updates'</b> from the Main Menu\n"
+
+    # Only process if uka-internet found (indicating UKA Repos active)
     if [ -e "$APT_SOURCES.uka-internet" ]; then
+        # Replace sources.list
         mv "$APT_SOURCES.uka-internet" "$APT_SOURCES"
     fi
+
+    # Re-activate all sources.list.d entries that had been DISABLED via
+    # "#wasta" at end of line
+    # sed: match all lines starting with "#" that end with "#wasta"
+    find $APT_SOURCES_D -type f -exec \
+        sed -i -e 's@^# *\(deb.*\) #wasta@\1@g' {} \;
+
 else
     #User CANCELED so close (for now no message)
     exit 0
