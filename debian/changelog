@@ -1,3 +1,10 @@
+wasta-custom-png-uka (1.1.5) xenial; urgency=medium
+
+  * changing gschema.override file to z_25 so won't override regional
+    packages
+
+ -- Rik Shaw <rikshaw76@gmail.com>  Fri, 11 Aug 2017 11:03:13 +0300
+
 wasta-custom-png-uka (1.1.4) xenial; urgency=medium
 
   * wasta-uka-repos: adding sources.list.d repository  toggling based on
