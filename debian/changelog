@@ -1,3 +1,10 @@
+wasta-custom-png-uka (1.1.6) xenial; urgency=medium
+
+  * wasta-uka-repos: account for active repos with #wasta at end due to
+    user manually re-enabling them
+
+ -- Rik Shaw <rikshaw76@gmail.com>  Wed, 30 Aug 2017 11:24:38 +0300
+
 wasta-custom-png-uka (1.1.5) xenial; urgency=medium
 
   * changing gschema.override file to z_25 so won't override regional

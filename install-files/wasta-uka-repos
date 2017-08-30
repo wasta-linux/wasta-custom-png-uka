@@ -13,6 +13,8 @@
 #   2017-07-02 kim: desktop icon fix; added messages to output
 #   2017-08-11 rik: adding sources.list.d disabling and re-enabling by using
 #       "#wasta" at the end of lines
+#   2017-08-30 rik: correcting logic to handle re-enabled repositories
+#       that have #wasta at the end (meaning the user had manually re-enabled)
 #
 # ==============================================================================
 
@@ -80,8 +82,10 @@ Update or install the wasta-custom-png-uka package!
 
     # DISABLE all sources.list.d entries
     # sed: match all lines that start with deb (with optional spaces before)
+    # DO NOT match any lines ending in #wasta since those were manually
+    #    re-enabled by user and we want to leave them alone
     find $APT_SOURCES_D -type f -exec \
-        sed -i -e 's@^ *\(deb.*\)@# \1 #wasta@g' {} \;
+        sed -i -e '/#wasta$/! s@^ *\(deb.*\)@# \1 #wasta@g' {} \;
 
 elif [ "$UKA_SERVERS" == "OFF" ]; then
     # Disable UKA Mirrors: IF sources.list.uka-internet found (we are active)
@@ -99,9 +103,10 @@ To confirm your current software sources check
 
     # Re-activate all sources.list.d entries that had been DISABLED via
     # "#wasta" at end of line
-    # sed: match all lines starting with "#" that end with "#wasta"
+    # sed: match all lines with "deb ... #wasta" (could be
+    # either enabled or disabled if user had manually re-enabled)
     find $APT_SOURCES_D -type f -exec \
-        sed -i -e 's@^# *\(deb.*\) #wasta@\1@g' {} \;
+        sed -i -e 's@.*\(deb.*\) #wasta@\1@g' {} \;
 
 else
     #User CANCELED so close (for now no message)
